@@ -28,6 +28,7 @@ class LocationAndColorChangingTriangle extends LocationAndColorChangingShape{
 	
 	LocationAndColorChangingTriangle(Point location, Color color) {
 		super(location, color);
+		checkRep();
 	}
 
     /**
@@ -37,6 +38,7 @@ class LocationAndColorChangingTriangle extends LocationAndColorChangingShape{
      */
 	public void setSize(Dimension dimension) throws ImpossibleSizeException {
 		size.setSize(dimension);
+		checkRep();
 	}
 
 	 /**
@@ -48,8 +50,9 @@ class LocationAndColorChangingTriangle extends LocationAndColorChangingShape{
 	}
 
     /**
-     * @effects will draw an Oval  
-     * using  fillOval method of Graphics 
+     * @effects will draw an triangle  
+     * using  fillPolygon method of Graphics 
+     * @modifies Graphics g 
      */
 	public void draw(Graphics g) {
 		g.setColor(getColor());
@@ -59,6 +62,18 @@ class LocationAndColorChangingTriangle extends LocationAndColorChangingShape{
 		g.fillPolygon(pointsX,pointsY, 3 );
 		
 	}
+	
+	/*
+	 * @effects Returns true if the rep invariant holds for this: otherwise returns
+	 * false
+	 */
+    public boolean checkRep() {
+    	if(  (size == null) || !(size instanceof Dimension) ) {
+    		return false;
+    	}
+    	else return true;
+    }
+    
     public Object Clone() {
     	LocationAndColorChangingTriangle newTrinagle = (LocationAndColorChangingTriangle)super.clone();
     	newTrinagle.size = (Dimension)size.clone();
