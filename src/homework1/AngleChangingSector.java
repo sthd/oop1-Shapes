@@ -11,32 +11,44 @@ import java.awt.*;
 
 class AngleChangingSector extends Shape implements Animatable{
 	private int startAngle , arcAngle;
-	private boolean fillShapeClockwise;
 	private int directionOf;
 	private Dimension size = new Dimension(0,0);
-	public AngleChangingSector(Point location, Color color, int startAngle, int arcAngle) {
-		super(location, color);
-		this.startAngle = startAngle;
-		this.arcAngle = arcAngle;
-		this.fillShapeClockwise = false;
-		this.directionOf=1;
-	}
-
 	/*
 	 * AF(c) = A shape oval so that
 	 * c.size is the size of the blocking rectangle of the oval
-	 * (c.size.width == rectangle.width
-	 * c.size.hight == rectangle.hight)
+	 * c.startAngle is the start Angle of the sector of the oval
+	 * c.arcAngle is the angle arc of the sector
+	 * c.directionof is the direction of the arc movement
 	 */
 
 	/*
 	 * The rep invariant is:
 	 * c.size != null && c.size is of type Dimension
+	 * 0<= c.startAngle <= 359
+	 * 0<= c.arcAngle <= 359
+	 * directionof is -1 or 1
 	 */
+	
+	
+	/**
+	 * @effects Initializes this with a a given start angle , arc angle, location and color. 
+	 * size is initialized to be 0,0
+	 */
+	public AngleChangingSector(Point location, Color color, int startAngle, int arcAngle) {
+		super(location, color);
+		this.startAngle = startAngle;
+		this.arcAngle = arcAngle;
+		this.directionOf=1;
+		assert checkRep();
+	}
 
-	@Override
+
+    /**
+     * @effects will draw an Oval  
+     * using  fillOval method of Graphics
+     * @modifies Graphics g 
+     */
 	public void step(Rectangle bound) {
-		// TODO Auto-generated method stub
 		if ((arcAngle % 359) != 0 ){
 				arcAngle+=directionOf;
 		}
@@ -44,27 +56,52 @@ class AngleChangingSector extends Shape implements Animatable{
 			directionOf = -directionOf;
 			arcAngle+=directionOf;
 			}
+		assert checkRep();
 		}
 
-	@Override
+    /**
+     * @modifies this
+     * @effects Resizes this so that its bounding rectangle has the specified
+     * 			dimension.
+     */
 	public void setSize(Dimension dimension) {
-		// TODO Auto-generated method stub
 		this.size.setSize(dimension);
+		assert checkRep();
 	}
 
-	@Override
+    /**
+     * @effects return the bounding rectangle of this 
+     * with size and location of top left point
+     */
 	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
 		return new Rectangle(getLocation(),size);
-		//return null;
 	}
 
-	@Override
+    /**
+     * @modifies Graphics g 
+     * @effects will draw an sector of an oval  with angle 
+     * using  fillarc method of Graphics
+     */
 	public void draw(Graphics g) {
-		//g.setColor(Color.BLACK);
+		g.setColor(getColor());
 		g.fillArc(this.getLocation().x, this.getLocation().y, this.size.width, this.size.height, startAngle, arcAngle);
 	}
-
+	
+    public boolean checkRep() {
+    	if(  (size == null) || !(size instanceof Dimension) ) {
+    		return false;
+    	}
+    	else if(!( startAngle<360 && startAngle>=0 )) {
+    		return false;
+    	}
+    	else if(!( arcAngle<360 && arcAngle>=0 )) {
+    		return false;
+    	}
+    	else if ((directionOf != 1 && directionOf != -1)) {
+    		return false;
+    	}
+    	else return true;
+    }
 
 
 }
