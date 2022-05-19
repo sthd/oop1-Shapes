@@ -4,9 +4,9 @@ import java.awt.*;
 /**
  * An AngleChangingSector is a sector of an oval shape with a set colour
  * that can change its portion of the oval shape using its step() method.
- *  A sector has a starting angle and an arc angle that determine its
- * portion. An AngleChangingSector consists of a set of properties: {location, color, shape, size}.
- * Shapes are mutable and cloneable.
+ * A sector has a starting angle and an arc angle that determine its
+ * portion. An AngleChangingSector consists of a set of properties:
+ * {location, color, startAngle, arcAngle}.
  */
 
 class AngleChangingSector extends Shape implements Animatable{
@@ -21,6 +21,18 @@ class AngleChangingSector extends Shape implements Animatable{
 		this.fillShapeClockwise = false;
 		this.directionOf=1;
 	}
+
+	/*
+	 * AF(c) = A shape oval so that
+	 * c.size is the size of the blocking rectangle of the oval
+	 * (c.size.width == rectangle.width
+	 * c.size.hight == rectangle.hight)
+	 */
+
+	/*
+	 * The rep invariant is:
+	 * c.size != null && c.size is of type Dimension
+	 */
 
 	@Override
 	public void step(Rectangle bound) {
@@ -49,8 +61,10 @@ class AngleChangingSector extends Shape implements Animatable{
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.BLACK);
+		//g.setColor(Color.BLACK);
 		g.fillArc(this.getLocation().x, this.getLocation().y, this.size.width, this.size.height, startAngle, arcAngle);
 	}
-	
+
+
+
 }
