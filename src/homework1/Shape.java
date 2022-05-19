@@ -20,6 +20,7 @@ public abstract class Shape implements Cloneable {
 	//The rep invariant is:
 	//c.location != null && c.color !=null &&
 	//c.location is Point && c.color is Color
+
 	
 		
 	

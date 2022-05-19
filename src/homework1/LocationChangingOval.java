@@ -60,6 +60,7 @@ public class LocationChangingOval extends LocationChangingShape{
 	/*
 	 * @effects Returns true if the rep invariant holds for this: otherwise returns
 	 * false
+	 * 
 	 */
     public boolean checkRep() {
     	if(  (size == null) || !(size instanceof Dimension) ) {

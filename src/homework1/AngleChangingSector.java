@@ -87,7 +87,7 @@ class AngleChangingSector extends Shape implements Animatable{
 		g.fillArc(this.getLocation().x, this.getLocation().y, this.size.width, this.size.height, startAngle, arcAngle);
 	}
 	
-	/*
+	/* 
 	 * @effects Returns true if the rep invariant holds for this: otherwise returns
 	 * false
 	 */

@@ -38,7 +38,7 @@ public abstract class LocationAndColorChangingShape extends LocationChangingShap
     /**
      * @modifies this
      * @effects Changes the location of this as described in the specification
-     *          of LocationChangingShape.step(Rectangle bound) &&
+     *          of LocationChangingShape.step(Rectangle bound) and
 	 *			if the velocity of this needs to be changed (as described in LocationChangingShape.step(Rectangle bound)),
 	 *			changes the color of this to a new random color;
 	 *			else, does not change the color of this.
