@@ -6,9 +6,8 @@ public class ImpossibleSizeException extends Exception{
 	public Dimension alternativeSize;
 	
 	public ImpossibleSizeException() {
-		super("Impossible Size Exception");}
-		// calcAlternativeSize
-//		alternativeSize = new Dimension(5,5);
-		
+		super("Impossible Size Exception");
+		alternativeSize = new Dimension(5,5);
+		}		
 	
 }
