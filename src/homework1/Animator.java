@@ -51,7 +51,7 @@ public class Animator extends JFrame implements ActionListener {
         // enable animation timer (ticks 25 times per second)
 		// If the animation doesn't work on your computer, increase the first argument of the Timer constructor
 		// until you see the animation. Return the number to 40 before submitting the code.
-        Timer timer = new Timer(40, new ActionListener() {
+        Timer timer = new Timer(110, new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
 	                if (animationCheckItem.isSelected()) {
 	                	// TODO: Add code for making one animation step for all
@@ -180,13 +180,18 @@ public class Animator extends JFrame implements ActionListener {
 			
 			LocationChangingShape shape = switch(source.getText()) {
 				case "Triangle"->
-					 new LocationAndColorChangingTriangle(point,color) ;
+					 new LocationAndColorChangingTriangle(point,color) ;
+
 				case "Oval"->
-					 new LocationChangingOval(point,color) 	;				
+					 new LocationChangingOval(point,color) 	;				
+
 				case "Numbered Oval"->
-					 new LocationChangingNumberedOval(point,color) ;
+					 new LocationChangingNumberedOval(point,color) ;
+
 				case "Sector"->
-					  new LocationChangingOval(point,color) ;				default -> new LocationChangingNumberedOval(point,color) ;
+					  new AngleChangingSector(point,color);
+
+				default -> new LocationChangingNumberedOval(point,color) ;
 			};
 			
 			try {

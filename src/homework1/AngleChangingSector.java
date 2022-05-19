@@ -3,6 +3,7 @@ import java.awt.*;
 
 class AngleChangingSector extends Shape implements Animatable{
 	int startAngle,arcAngle;
+	private Dimension size = new Dimension(0,0);
 	public AngleChangingSector(Point location, Color color) {
 		super(location, color);
 	}
@@ -10,25 +11,31 @@ class AngleChangingSector extends Shape implements Animatable{
 	@Override
 	public void step(Rectangle bound) {
 		// TODO Auto-generated method stub
-		
+		if (arcAngle < 359){
+			arcAngle++;
+		}
+		else{
+			arcAngle=0;
+		}
 	}
 
 	@Override
 	public void setSize(Dimension dimension) {
 		// TODO Auto-generated method stub
-		
+		this.size.setSize(dimension);
 	}
 
 	@Override
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle(getLocation(),size);
+		//return null;
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.fillArc(0, 0, 0, 0, 0, 0);
-		
+		g.setColor(Color.BLACK);
+		g.fillArc(this.getLocation().x, this.getLocation().y, this.size.width, this.size.width, startAngle, arcAngle);
 	}
 	
 }
