@@ -49,7 +49,8 @@ public class LocationChangingOval extends LocationChangingShape{
 	}
     /**
      * @effects will draw an Oval  
-     * using  fillOval method of Graphics 
+     * using  fillOval method of Graphics
+     * @modifies Graphics g 
      */
 	public void draw(Graphics g) {
 		g.setColor(getColor());
