@@ -51,7 +51,7 @@ public class Animator extends JFrame implements ActionListener {
         // enable animation timer (ticks 25 times per second)
 		// If the animation doesn't work on your computer, increase the first argument of the Timer constructor
 		// until you see the animation. Return the number to 40 before submitting the code.
-        Timer timer = new Timer(110, new ActionListener() {
+        Timer timer = new Timer(40, new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
 	                if (animationCheckItem.isSelected()) {
 	                	// TODO: Add code for making one animation step for all
