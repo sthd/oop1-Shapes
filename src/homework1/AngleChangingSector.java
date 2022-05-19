@@ -102,6 +102,17 @@ class AngleChangingSector extends Shape implements Animatable{
     	}
     	else return true;
     }
+    
+    public Object Clone() {
+    	AngleChangingSector newSector = 
+    			(AngleChangingSector)super.clone();
+    	newSector.size = (Dimension) size.clone();
+    	newSector.arcAngle = arcAngle;
+    	newSector.startAngle = startAngle;
+    	return newSector;
+    	
+
+    }
 
 
 }
