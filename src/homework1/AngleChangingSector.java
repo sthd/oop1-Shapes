@@ -1,6 +1,14 @@
 package homework1;
 import java.awt.*;
 
+/**
+ * An AngleChangingSector is a sector of an oval shape with a set colour
+ * that can change its portion of the oval shape using its step() method.
+ *  A sector has a starting angle and an arc angle that determine its
+ * portion. An AngleChangingSector consists of a set of properties: {location, color, shape, size}.
+ * Shapes are mutable and cloneable.
+ */
+
 class AngleChangingSector extends Shape implements Animatable{
 	private int startAngle , arcAngle;
 	private boolean fillShapeClockwise;
