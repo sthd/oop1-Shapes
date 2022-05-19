@@ -3,24 +3,28 @@ import java.awt.*;
 
 class AngleChangingSector extends Shape implements Animatable{
 	private int startAngle , arcAngle;
-	private boolean fillCounterClockwise;
+	private boolean fillShapeClockwise;
+	private int directionOf;
 	private Dimension size = new Dimension(0,0);
 	public AngleChangingSector(Point location, Color color, int startAngle, int arcAngle) {
 		super(location, color);
 		this.startAngle = startAngle;
 		this.arcAngle = arcAngle;
+		this.fillShapeClockwise = false;
+		this.directionOf=1;
 	}
 
 	@Override
 	public void step(Rectangle bound) {
 		// TODO Auto-generated method stub
-		if (arcAngle < 359){
-			arcAngle++;
+		if ((arcAngle % 359) != 0 ){
+				arcAngle+=directionOf;
 		}
 		else{
-			arcAngle=0;
+			directionOf = -directionOf;
+			arcAngle+=directionOf;
+			}
 		}
-	}
 
 	@Override
 	public void setSize(Dimension dimension) {
