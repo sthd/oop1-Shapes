@@ -58,8 +58,8 @@ public class Animator extends JFrame implements ActionListener {
 	                	// 		 shapes in this
 	                	
 	            		java.util.Iterator<Shape> iteratorShapes = shapes.iterator();
-	            		iteratorShapes.forEachRemaining((shape)->((LocationChangingShape)shape).step(new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT)));	
-	            			         	
+	            		iteratorShapes.forEachRemaining((shape)->((Animatable)shape).step(new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT)));
+						//iteratorShapes.forEachRemaining((shape)->((LocationChangingShape)shape).step(new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT)));
 	            		repaint();	// make sure that the shapes are redrawn
 	                }
 	            }
@@ -177,8 +177,10 @@ public class Animator extends JFrame implements ActionListener {
 			Dimension dimension = new Dimension(rand.nextInt((int)WINDOW_WIDTH/10,(int)WINDOW_WIDTH*3/10),
 					rand.nextInt((int)WINDOW_WIDTH/10,(int)WINDOW_WIDTH*3/10));
 			Point point = new Point(rand.nextInt(WINDOW_WIDTH-dimension.width),rand.nextInt(WINDOW_HEIGHT-dimension.height));
-			
-			LocationChangingShape shape = switch(source.getText()) {
+			Integer startAngle = rand.nextInt(0,359);
+			Integer arcAngle = rand.nextInt(0,359);
+			//LocationChangingShape shape = switch(source.getText()) {
+			Shape shape = switch(source.getText()) {
 				case "Triangle"->
 					 new LocationAndColorChangingTriangle(point,color) ;
 
@@ -189,7 +191,7 @@ public class Animator extends JFrame implements ActionListener {
 					 new LocationChangingNumberedOval(point,color) ;
 
 				case "Sector"->
-					  new AngleChangingSector(point,color);
+					  new AngleChangingSector(point,color, startAngle, arcAngle);
 
 				default -> new LocationChangingNumberedOval(point,color) ;
 			};

@@ -2,10 +2,13 @@ package homework1;
 import java.awt.*;
 
 class AngleChangingSector extends Shape implements Animatable{
-	int startAngle,arcAngle;
+	private int startAngle , arcAngle;
+	private boolean fillCounterClockwise;
 	private Dimension size = new Dimension(0,0);
-	public AngleChangingSector(Point location, Color color) {
+	public AngleChangingSector(Point location, Color color, int startAngle, int arcAngle) {
 		super(location, color);
+		this.startAngle = startAngle;
+		this.arcAngle = arcAngle;
 	}
 
 	@Override
@@ -35,7 +38,7 @@ class AngleChangingSector extends Shape implements Animatable{
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillArc(this.getLocation().x, this.getLocation().y, this.size.width, this.size.width, startAngle, arcAngle);
+		g.fillArc(this.getLocation().x, this.getLocation().y, this.size.width, this.size.height, startAngle, arcAngle);
 	}
 	
 }

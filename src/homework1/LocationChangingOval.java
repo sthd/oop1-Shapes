@@ -53,8 +53,7 @@ public class LocationChangingOval extends LocationChangingShape{
      */
 	public void draw(Graphics g) {
 		g.setColor(getColor());
-		g.fillOval(getLocation().x, getLocation().y ,
-				size.width , size.height );	
+		g.fillOval(getLocation().x, getLocation().y , size.width , size.height );
 	}
 	
 	/*
