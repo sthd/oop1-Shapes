@@ -11,11 +11,20 @@ import java.awt.*;
  */
 public abstract class LocationAndColorChangingShape extends LocationChangingShape{
 
-    // TODO (BOM): Write Abstraction Function
+	
+	/*
+	 * AF(c) = Moving Shape and Color Changing Shape 
+	 * so that each time it hits a wall inside Bounding Rectangle 
+	 * it changes his color
+	 */
+	 
 
-    // TODO (BOM): Write Representation Invariant
+	/*
+	 * The rep invariant is: 
+	 * The same rep invariant of the parents
+	 */
 
-
+	
     /**
      * @effects Initializes this with a a given location and color. Each
      *          of the horizontal and vertical velocities of the new
